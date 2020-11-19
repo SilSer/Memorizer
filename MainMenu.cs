@@ -25,11 +25,12 @@ namespace Memorizer
                         new NewTopic().Create();
                         break;
                     case 3:
-                        new NewWord().Add();
+                        new NewWord().AddWord();
                         break;
                     case 0:
                         Console.WriteLine("Всего доброго!");
-                        Task.Delay(100);
+
+                        Task.Delay(1);
                         Process.GetCurrentProcess().Kill();
                         break;
                     default:
