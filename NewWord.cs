@@ -9,66 +9,61 @@ namespace Memorizer
         private string engWord;
         private string rusWord;
         private string selectedTopic;
-        private readonly string dirPath = new NewTopic().topicDir;
         private string[] topicList;
+        private string selectedTopicName;
+
 
         public void AddWord()
         {
-            
+            Tools tools = new Tools();
             
             Console.WriteLine("Выберете номер темы, в которую хотите добавить слово");
-            topicList = Directory.GetFiles(dirPath);
-            for (int i = 0; i < topicList.Length; i++)
-            {
-                Console.WriteLine($"{i + 1} - {CutPath(topicList[i])}");
-            }
-            Console.WriteLine("0 - Назад");
             try
             {
-                int temp = int.Parse(Console.ReadLine());
-                if (temp == 0)
+                topicList=tools.GetTopicList();
+
+                int num = int.Parse(Console.ReadLine());
+                if (num == 0)
                 {
                     new MainMenu().Menu();
                 }
-                selectedTopic = topicList[temp - 1];
 
+                selectedTopic = tools.SelectTopic(topicList, num);
+                selectedTopicName = tools.CutPath(selectedTopic);
             }
-            catch (FormatException)
+            catch (Exception)
             {
-                Console.WriteLine("Введите только номер");
-                this.AddWord();
+                Console.WriteLine($"Что то не то");
+                AddWord();
             }
-            Console.WriteLine($"Вы выбрали тему {CutPath(selectedTopic)}");
 
-           
+            Console.Write($"Вы выбрали тему {selectedTopicName}\n\n");
+
+            AddToFile();
+        } 
+        private void AddToFile()
+        {
+            Tools tools = new Tools();
+
             Console.WriteLine("Введите иносстранное слово:      (0 - Назад)");
             engWord = Console.ReadLine();
-            Check(engWord);
+            tools.CheckForMainMenu(engWord);
+
             Console.WriteLine("Введите его русский перевод      (0 - Назад)");
             rusWord = Console.ReadLine();
-            Check(rusWord);
+            tools.CheckForMainMenu(rusWord);
 
-            using (StreamWriter write = new StreamWriter(selectedTopic, true))
-            {
-                write.WriteLine(engWord + "\t" + rusWord);
-            }
-            this.AddWord();
+            tools.AddWordToFile(selectedTopic, engWord, rusWord);
+
+            AddToFile();
+        }
+
+            
                 
            
-        }
-        private string CutPath(string s)
-        {
-            s = Path.GetFileName(s.Substring(0, s.Length - 4));
-            return s;
-        }
+        
+        
 
-        private string Check(string s)
-        {
-            if ($"{s}"=="0")
-            {
-                new MainMenu().Menu();
-            }
-            return s;
-        }
+        
     }
 }

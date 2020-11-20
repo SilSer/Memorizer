@@ -3,12 +3,12 @@
   <Class Name="Memorizer.Start">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAEAAAIAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Start.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Memorizer.MainMenu">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>MainMenu.cs</FileName>
@@ -17,7 +17,7 @@
   <Class Name="Memorizer.NewWord">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAgIAAAAAAAAAACAIBAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>CAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>NewWord.cs</FileName>
     </TypeIdentifier>
   </Class>

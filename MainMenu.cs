@@ -19,7 +19,7 @@ namespace Memorizer
                 switch (answer)
                 {
                     case 1:
-                        new Start();
+                        new Start().LangMenu();
                         break;
                     case 2:
                         new NewTopic().Create();
