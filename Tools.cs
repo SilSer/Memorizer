@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text;
+using System.Collections.Generic;
 
 namespace Memorizer
 {
@@ -27,11 +27,9 @@ namespace Memorizer
         }           
 
         public void AddWordToFile(string path, string s1, string s2)
-        {           
-            using (StreamWriter write = new StreamWriter(path, true))
-            {
-               write.WriteLine(s1 + "\t" + s2);
-            }
+        {
+            using StreamWriter write = new StreamWriter(path, true);
+            write.WriteLine(s1 + "\t" + s2);
         }
         public string CutPath(string s)
         {
@@ -46,5 +44,29 @@ namespace Memorizer
             }
             return s;
         }
+        public int CheckForMainMenu(int s)
+        {
+            if (s == 0)
+            {
+                new MainMenu().Menu();
+            }
+            return s;
+        }
+        public Dictionary<string, string> FillDirtionary(string path)
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                Dictionary<string, string> dictionaryTool=new Dictionary<string, string>();
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] words = line.Split(new char[] { '\t' });
+
+                    dictionaryTool.Add(words[0], words[1]);
+                }
+                return dictionaryTool;
+            }
+        }
+
     }
 }

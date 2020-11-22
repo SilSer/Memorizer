@@ -40,6 +40,8 @@ namespace Memorizer
             Console.Write($"Вы выбрали тему {selectedTopicName}\n\n");
 
             AddToFile();
+
+
         } 
         private void AddToFile()
         {
